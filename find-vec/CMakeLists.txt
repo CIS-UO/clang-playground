@@ -1,12 +1,17 @@
-add_clang_executable(find-vec
-  FindVec.cpp)
-target_link_libraries(find-vec
+project(find-vec)
+
+add_executable(${PROJECT_NAME} FindVec.cpp)
+
+target_link_libraries(${PROJECT_NAME}
+PRIVATE
   clangAST
   clangBasic
   clangFrontend
   clangIndex
   clangRewrite
   clangTooling
-  )
+)
 
-install(TARGETS find-vec RUNTIME DESTINATION bin)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CLANG_INCLUDE_DIRS})
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)

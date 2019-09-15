@@ -1,12 +1,17 @@
-add_clang_executable(find-decl 
-  FindDecl.cpp)
-target_link_libraries(find-decl
+project(find-decl)
+
+add_executable(${PROJECT_NAME} FindDecl.cpp)
+
+target_link_libraries(${PROJECT_NAME}
+PRIVATE
   clangAST
   clangBasic
   clangFrontend
   clangIndex
   clangRewrite
   clangTooling
-  )
+)
 
-install(TARGETS find-decl RUNTIME DESTINATION bin)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CLANG_INCLUDE_DIRS})
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
