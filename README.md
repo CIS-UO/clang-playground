@@ -23,8 +23,10 @@ cmake --build .
 ```
 
 ## Example Run
+```
 cd find-decl
 find-decl decl_test.h
+```
 ![find-decl run](img/find-decl_run.png)
 
 
