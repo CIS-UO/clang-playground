@@ -23,7 +23,7 @@ public:
   run(const clang::ast_matchers::MatchFinder::MatchResult &Result) final {
     llvm::outs() << ".";
     if (const auto *F =
-            Result.Nodes.getDeclAs<clang::FunctionDecl>(FunctionID)) {
+            Result.Nodes.getNodeAs<clang::FunctionDecl>(FunctionID)) {
       const auto& SM = *Result.SourceManager;
       const auto& Loc = F->getLocation();
       llvm::outs() << SM.getFilename(Loc) << ":"
@@ -43,7 +43,7 @@ static llvm::cl::extrahelp MoreHelp(
     "\npass-by-value argument.");
 
 int main(int argc, const char **argv) {
-  llvm::sys::PrintStackTraceOnErrorSignal();
+  llvm::sys::PrintStackTraceOnErrorSignal(argv[0]);
   clang::tooling::CommonOptionsParser Options(argc, argv, FindVecCategory);
   clang::tooling::ClangTool Tool(Options.getCompilations(),
                                  Options.getSourcePathList());

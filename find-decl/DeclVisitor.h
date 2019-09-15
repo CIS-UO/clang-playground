@@ -16,7 +16,7 @@ public:
 
   bool VisitNamedDecl(clang::NamedDecl *NamedDecl) {
     llvm::outs() << "Found " << NamedDecl->getQualifiedNameAsString() << " at "
-                 << getDeclLocation(NamedDecl->getLocStart()) << "\n";
+                 << getDeclLocation(NamedDecl->getBeginLoc()) << "\n";
     return true;
   }
 
