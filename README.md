@@ -1,23 +1,25 @@
 clang-playground
 ================
 
-This is the repository for clang-playground series.
+This is the fork of https://github.com/xinhuang/clang-playground the repository for clang-playground series.
 
-## How to Build
+## How to Build Visual Studio 2017
 
-Clone LLVM source:  
-`git clone http://llvm.org/git/llvm.git src`
-
-Clone Clang source:  
-`git clone http://llvm.org/git/clang.git src/tools/clang`
-
-Clone clang-playground source:  
-`git clone https://github.com/xinhuang/clang-playground.git src/tools/clang/tools/clang-playground` 
-
+Clone & build llvm-project source:  
 ```
-mkdir debug && cd debug
-../src/configure
-make -j
+git clone https://github.com/llvm/llvm-project.git -b llvmorg-9.0.0-rc5
+mkdir build && cd build
+cmake -G "Visual Studio 15 Win64" ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_BUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=./install
+cmake --build . --target install
+set Clang_DIR=<llvm-repository>/build/0install
+```
+
+Clone & build clang-playground source:  
+```
+git clone https://github.com/AchimTuran/clang-playground.git
+mkdir build && cd build
+cmake -G "Visual Studio 15 Win64" ..
+cmake --build .
 ```
 
 ## find-decl
