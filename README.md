@@ -22,6 +22,12 @@ cmake -G "Visual Studio 15 Win64" ..
 cmake --build .
 ```
 
+## Example Run
+cd find-decl
+find-decl decl_test.h
+![find-decl run](img/find-decl_run.png)
+
+
 ## find-decl
 
 Find all the declarations in a given file.
